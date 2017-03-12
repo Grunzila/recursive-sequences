@@ -19,6 +19,14 @@ function tribonacci(num){
     return tribonacci(num - 1) + tribonacci(num - 2) + tribonacci(num - 3);
 }
 
+function divBuild(name, id){
+    var div = document.createElement('div');
+    div.setAttribute('class', name);
+    div.setAttribute('id', id);
+    document.body.appendChild(div);
+    return document.querySelector('.' + name);
+}
+
 document.body.style.backgroundColor = '#201000';
 
 var divis1 = document.createElement('div');
@@ -47,3 +55,7 @@ divis3.style.borderRadius = '12px';
 divis3.style.height = '40px';
 divis3.style.margin = '20px 5px';
 document.body.appendChild(divis3);
+
+var fourthDiv = divBuild('fourth', 'box');
+fourthDiv.style.height = '40px';
+fourthDiv.style.background = 'purple';
