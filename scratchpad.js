@@ -7,6 +7,7 @@ function fibonacci(num, node){
     if (num <= 1){
         if (num === 0) sum = 0;
         else if (num === 1) sum = 1;
+        
         var p = document.createElement('p');
         p.textContent = 'Fib(' + num + ') = ' + sum;
         div.appendChild(p);
@@ -26,8 +27,10 @@ function fibonacci(num, node){
         var p = document.createElement('p');
         p.textContent = 'Fib(' + num + ') = ' + sum;
         div.appendChild(p);
+        
+        div.appendChild(left.node);
+        div.appendChild(right.node);
     }
-    node.appendChild(div);
     return {'result': sum, 'node': div};
 }
 
@@ -82,24 +85,25 @@ for (var i = 0; i < box.length; i++){
   box[i].style.margin = '20px 5px';
 }
 
-fibonacci(5, fibo);
+fibo.appendChild(fibonacci(5, fibo).node);
 
 var right = document.querySelectorAll('.right');
 for (var i = 0; i < right.length; i++){
   //right[i].style.display = 'inline-block';
   right[i].style.float = 'right';
+  right[i].style.marginLeft = '3px';
 }
 
 var left = document.querySelectorAll('.left');
 for (var i = 0; i < left.length; i++){
   //left[i].style.display = 'inline-block';
   left[i].style.float = 'left';
+  left[i].style.marginRight = '3px';
 }
 
 var fib = document.querySelectorAll('.fib');
 for (var i = 0; i < fib.length; i++){
   fib[i].style.textAlign = 'center';
-  fib[i].style.padding = '5px';
   //fib[i].style.borderWidth = '10px';
   //fib[i].style.borderColor = 'clear';
   fib[i].style.backgroundColor = 'rgba(200,200,200,0.15)';
