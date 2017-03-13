@@ -27,7 +27,17 @@ function divBuild(name, id){
     return document.querySelector('.' + name);
 }
 
-document.body.style.backgroundColor = '#201000';
+function linkBuild(link, text){
+    var a = document.createElement('a');
+    a.setAttribute('href', link);
+    a.setAttribute('target','_blank');
+    a.innerHTML = text;
+    //a.style.fontColor = 'white';
+    //a.style.setAttribute('visited','yellow');
+    document.body.appendChild(a);
+}
+
+document.body.style.backgroundColor = '#B09090';
 
 var divis1 = document.createElement('div');
 divis1.setAttribute('class','fiboDiv');
@@ -59,3 +69,14 @@ document.body.appendChild(divis3);
 var fourthDiv = divBuild('fourth', 'box');
 fourthDiv.style.height = '40px';
 fourthDiv.style.background = 'purple';
+
+/*var a_fib = document.createElement('a');
+a_fib.setAttribute('href','https://oeis.org/A000045');
+a_fib.setAttribute('target','_blank');
+a_fib.innerHTML = 'Fibonacci Sequence';
+a_fib.style.fontColor = 'white';
+document.body.appendChild(a_fib);*/
+
+linkBuild('https://oeis.org/A000045', 'Fibonacci Sequence|');
+linkBuild('https://oeis.org/A000129', 'Pell Sequence|');
+linkBuild('https://oeis.org/A000073', 'Tribonacci Sequence');
