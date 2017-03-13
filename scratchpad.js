@@ -1,4 +1,5 @@
 document.title = 'Fabulous Number Sequence Trees!';
+document.body.style.backgroundColor = '#B09090';
 
 function fibonacci(num){
     if (num === 0) return 0;
@@ -24,7 +25,7 @@ function divBuild(name, id){
     div.setAttribute('class', name);
     div.setAttribute('id', id);
     document.body.appendChild(div);
-    return document.querySelector('.' + name);
+    return document.getElementById(id);
 }
 
 function linkBuild(link, text){
@@ -37,45 +38,23 @@ function linkBuild(link, text){
     document.body.appendChild(a);
 }
 
-document.body.style.backgroundColor = '#B09090';
+var fibo = divBuild('fib box', 'fibonacci');
+var pell = divBuild('pell box', 'pell');
+var tribo = divBuild('trib box', 'tribonacci');
 
-var divis1 = document.createElement('div');
-divis1.setAttribute('class','fiboDiv');
-divis1.style.background = 'rgba(200,50,0,0.5)';
-divis1.style.border = '5px solid rgba(210,30,0,0.7)';
-divis1.style.borderRadius = '12px';
-divis1.style.height = '40px';
-divis1.style.margin = '20px 5px';
-document.body.appendChild(divis1);
+fibo.style.background = 'rgba(200,50,0,0.5)';
+fibo.style.border = '5px solid rgba(210,30,0,0.7)';
+pell.style.background = 'rgba(175,75,0,0.5)';
+pell.style.border = '5px solid rgba(165,85,0,0.7)';
+tribo.style.background = 'rgba(150,100,0,0.5)';
+tribo.style.border = '5px solid rgba(140,110,0,0.7)';
 
-var divis2 = document.createElement('div');
-divis2.setAttribute('class','fiboDiv');
-divis2.style.background = 'rgba(175,75,0,0.5)';
-divis2.style.border = '5px solid rgba(165,85,0,0.7)';
-divis2.style.borderRadius = '12px';
-divis2.style.height = '40px';
-divis2.style.margin = '20px 5px';
-document.body.appendChild(divis2);
-
-var divis3 = document.createElement('div');
-divis3.setAttribute('class','fiboDiv');
-divis3.style.background = 'rgba(150,100,0,0.5)';
-divis3.style.border = '5px solid rgba(140,110,0,0.7)';
-divis3.style.borderRadius = '12px';
-divis3.style.height = '40px';
-divis3.style.margin = '20px 5px';
-document.body.appendChild(divis3);
-
-var fourthDiv = divBuild('fourth', 'box');
-fourthDiv.style.height = '40px';
-fourthDiv.style.background = 'purple';
-
-/*var a_fib = document.createElement('a');
-a_fib.setAttribute('href','https://oeis.org/A000045');
-a_fib.setAttribute('target','_blank');
-a_fib.innerHTML = 'Fibonacci Sequence';
-a_fib.style.fontColor = 'white';
-document.body.appendChild(a_fib);*/
+var box = document.querySelectorAll('.box');
+for (var i = 0; i < box.length; i++){
+  box[i].style.borderRadius = '12px';
+  box[i].style.height = '40px';
+  box[i].style.margin = '20px 5px';
+}
 
 linkBuild('https://oeis.org/A000045', 'Fibonacci Sequence|');
 linkBuild('https://oeis.org/A000129', 'Pell Sequence|');
