@@ -46,7 +46,7 @@ function fibonacci(iter, node){
 
 function pell(iter, node){
     var sum;
-    var div = divBuild('pell', null);
+    var div = divBuild('pel', null);
     if (iter <= 1){
         if (iter === 0) sum = 0;
         else if (iter === 1) sum = 1;
@@ -72,11 +72,38 @@ function pell(iter, node){
     return {'result': sum, 'node': div};
 }
 
-function tribonacci(num){
-    if (num === 0) return 0;
-    if (num === 1) return 0;
-    if (num === 2) return 1;
-    return tribonacci(num - 1) + tribonacci(num - 2) + tribonacci(num - 3);
+function tribonacci(iter, node){
+    var sum;
+    var div = divBuild('trib', null);
+    if (iter <= 2){
+        if (iter === 0) sum = 0;
+        else if (iter === 1) sum = 0;
+        else if (iter === 2) sum = 1;
+        
+        pSeqBuild('Trib', iter, sum, div);
+    }
+    else {
+        var left = tribonacci(iter - 1, div);
+        var className = left.node.getAttribute("class");
+        left.node.setAttribute('class', className + ' left');
+        
+        var center = tribonacci(iter - 2, div);
+        className = center.node.getAttribute("class");
+        center.node.setAttribute('class', className + ' center');
+        
+        var right = tribonacci(iter - 3, div);
+        className = right.node.getAttribute("class");
+        right.node.setAttribute('class', className + ' right');
+        
+        sum = left.result + center.result + right.result;
+        
+        pSeqBuild('Trib', iter, sum, div);
+        
+        div.appendChild(left.node);
+        div.appendChild(center.node);
+        div.appendChild(right.node);
+    }
+    return {'result': sum, 'node': div};
 }
 
 function linkBuild(link, text){
@@ -97,7 +124,7 @@ var tribo = divBuild('tribonacci box', 'tribonacci');
 
 fibo.appendChild(fibonacci(5, fibo).node);
 pello.appendChild(pell(5, pello).node);
-//tribo.appendChild(tribo(5, tribo).node);
+tribo.appendChild(tribonacci(5, tribo).node);
 
 
 var box = document.querySelectorAll('.box');
@@ -105,6 +132,7 @@ for (var i = 0; i < box.length; i++){
   box[i].style.borderRadius = '12px';
   box[i].style.width = '900px';
   box[i].style.margin = '20px 5px';
+  box[i].style.cursor = 'pointer';
 }
 
 fibo.style.background = 'rgba(200,50,0,0.5)';
@@ -118,7 +146,7 @@ for (var i = 0; i < fib.length; i++){
 
 pello.style.background = 'rgba(175,75,0,0.5)';
 pello.style.border = '5px solid rgba(165,85,0,0.7)';
-var pel = document.querySelectorAll('.pell');
+var pel = document.querySelectorAll('.pel');
 for (var i = 0; i < pel.length; i++){
   pel[i].style.textAlign = 'center';
   pel[i].style.backgroundColor = 'rgba(255,255,255,0.1)';
@@ -127,6 +155,12 @@ for (var i = 0; i < pel.length; i++){
 
 tribo.style.background = 'rgba(150,100,0,0.5)';
 tribo.style.border = '5px solid rgba(140,110,0,0.7)';
+var trib = document.querySelectorAll('.trib');
+for (var i = 0; i < trib.length; i++){
+  trib[i].style.textAlign = 'center';
+  trib[i].style.backgroundColor = 'rgba(255,255,255,0.1)';
+  trib[i].style.display = 'inline-block';
+}
 
 var right = document.querySelectorAll('.right');
 for (var i = 0; i < right.length; i++){
