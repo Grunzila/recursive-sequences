@@ -1,6 +1,17 @@
+//******************************************
+//          --DOCUMENT ATTRIBUTES--
+//******************************************
+
 document.title = 'Fabulous Number Sequence Trees!';
 document.body.style.backgroundColor = '#B09090';
 
+//******************************************
+//               --FUNCTIONS--
+//******************************************
+
+//Creates a div with class and id
+//Returns a pointer to the div
+//Use "null" for the id parameter to disinclude id
 function divBuild(name, id){
     var div = document.createElement('div');
     div.setAttribute('class', name);
@@ -10,12 +21,17 @@ function divBuild(name, id){
     return div;
 }
 
+//Creates text of a sequence iteration
+//'name' identifies the sequence
+//'iter' and 'sum' refers to the values in the sequence
+//'father' is the div to be appended onto
 function pSeqBuild(name, iter, sum, father){
     var p = document.createElement('p');
     p.textContent = name + '(' + iter + ') = ' + sum;
     father.appendChild(p);
 }
 
+//Creates Fibonacci sequence tree
 function fibonacci(iter, node){
     var sum;
     var div = divBuild('fib', null);
@@ -44,6 +60,7 @@ function fibonacci(iter, node){
     return {'result': sum, 'node': div};
 }
 
+//Creates Pell sequence tree
 function pell(iter, node){
     var sum;
     var div = divBuild('pel', null);
@@ -72,6 +89,7 @@ function pell(iter, node){
     return {'result': sum, 'node': div};
 }
 
+//Creates Tribonacci sequence tree
 function tribonacci(iter, node){
     var sum;
     var div = divBuild('trib', null);
@@ -106,6 +124,7 @@ function tribonacci(iter, node){
     return {'result': sum, 'node': div};
 }
 
+//Makes a hyperlink of an element
 function linkBuild(link, node){
     var a = document.createElement('a');
     a.setAttribute('href', link);
@@ -114,7 +133,9 @@ function linkBuild(link, node){
     document.body.appendChild(a);
 }
 
-
+//******************************************
+//           --INSTANTIATIONS--
+//******************************************
 
 var fibo = divBuild('fibonacci box', 'fibonacci');
 var pello = divBuild('pell box', 'pell');
@@ -124,6 +145,13 @@ fibo.appendChild(fibonacci(5, fibo).node);
 pello.appendChild(pell(5, pello).node);
 tribo.appendChild(tribonacci(5, tribo).node);
 
+linkBuild('https://oeis.org/A000045', fibo);
+linkBuild('https://oeis.org/A000129', pello);
+linkBuild('https://oeis.org/A000073', tribo);
+
+//******************************************
+//                 --STYLE--
+//******************************************
 
 var box = document.querySelectorAll('.box');
 for (var i = 0; i < box.length; i++){
@@ -176,7 +204,3 @@ for (var i = 0; i < left.length; i++){
   left[i].style.float = 'left';
   left[i].style.marginRight = '3px';
 }
-
-linkBuild('https://oeis.org/A000045', fibo);
-linkBuild('https://oeis.org/A000129', pello);
-linkBuild('https://oeis.org/A000073', tribo);
