@@ -137,14 +137,17 @@ function linkBuild(link, node){
 //           --INSTANTIATIONS--
 //******************************************
 
+//Creates a box for each sequence
 var fibo = divBuild('fibonacci box', 'fibonacci');
 var pello = divBuild('pell box', 'pell');
 var tribo = divBuild('tribonacci box', 'tribonacci');
 
-fibo.appendChild(fibonacci(5, fibo).node);
-pello.appendChild(pell(5, pello).node);
-tribo.appendChild(tribonacci(5, tribo).node);
+//Forms the tree of each tree
+fibo.appendChild(fibonacci(11, fibo).node);
+pello.appendChild(pell(11, pello).node);
+tribo.appendChild(tribonacci(11, tribo).node);
 
+//Makes hyperlinks from each sequence's box
 linkBuild('https://oeis.org/A000045', fibo);
 linkBuild('https://oeis.org/A000129', pello);
 linkBuild('https://oeis.org/A000073', tribo);
@@ -153,10 +156,11 @@ linkBuild('https://oeis.org/A000073', tribo);
 //                 --STYLE--
 //******************************************
 
+//Styles all sequence boxes
 var box = document.querySelectorAll('.box');
 for (var i = 0; i < box.length; i++){
   box[i].style.borderRadius = '12px';
-  box[i].style.width = '900px';
+  box[i].style.width = '37119px';
   box[i].style.margin = '20px 5px';
   box[i].style.cursor = 'pointer';
   box[i].style.letterSpacing = '2px';
@@ -165,6 +169,7 @@ for (var i = 0; i < box.length; i++){
   box[i].style.fontFamily = '"Comic Sans MS", cursive, sans-serif';
 }
 
+//Styles the Fibonacci sequence box
 fibo.style.background = 'rgba(200,50,0,0.5)';
 fibo.style.border = '5px solid rgba(210,30,0,0.7)';
 var fib = document.querySelectorAll('.fib');
@@ -174,6 +179,7 @@ for (var i = 0; i < fib.length; i++){
   fib[i].style.display = 'inline-block';
 }
 
+//Styles the Pell sequence box
 pello.style.background = 'rgba(175,75,0,0.5)';
 pello.style.border = '5px solid rgba(165,85,0,0.7)';
 var pel = document.querySelectorAll('.pel');
@@ -183,6 +189,7 @@ for (var i = 0; i < pel.length; i++){
   pel[i].style.display = 'inline-block';
 }
 
+//Styles the Tribonacci sequence box
 tribo.style.background = 'rgba(150,100,0,0.5)';
 tribo.style.border = '5px solid rgba(140,110,0,0.7)';
 var trib = document.querySelectorAll('.trib');
@@ -192,6 +199,7 @@ for (var i = 0; i < trib.length; i++){
   trib[i].style.display = 'inline-block';
 }
 
+//Styles right sequence elements 
 var right = document.querySelectorAll('.right');
 for (var i = 0; i < right.length; i++){
   //right[i].style.display = 'inline-block';
@@ -199,6 +207,7 @@ for (var i = 0; i < right.length; i++){
   right[i].style.marginLeft = '3px';
 }
 
+//Styles left sequence elements 
 var left = document.querySelectorAll('.left');
 for (var i = 0; i < left.length; i++){
   left[i].style.float = 'left';
