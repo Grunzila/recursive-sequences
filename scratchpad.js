@@ -18,7 +18,7 @@ function fibonacci(num, node){
         left.node.setAttribute('class', className + ' left');
         
         var right = fibonacci(num - 2, div);
-        className = left.node.getAttribute("class");
+        className = right.node.getAttribute("class");
         right.node.setAttribute('class', className + ' right');
         
         sum = left.result + right.result;
@@ -34,7 +34,7 @@ function fibonacci(num, node){
     return {'result': sum, 'node': div};
 }
 
-function pell(num){
+function pell(num, node){
     if (num === 0) return 0;
     if (num === 1) return 1;
     return 2*pell(num - 1) + pell(num - 2);
@@ -70,6 +70,10 @@ var fibo = divBuild('fibonacci box', 'fibonacci');
 var pell = divBuild('pell box', 'pell');
 var tribo = divBuild('tribonacci box', 'tribonacci');
 
+fibo.appendChild(fibonacci(5, fibo).node);
+//pell.appendChild(pell(5, pell).node);
+//tribo.appendChild(tribo(5, tribo).node);
+
 fibo.style.background = 'rgba(200,50,0,0.5)';
 fibo.style.border = '5px solid rgba(210,30,0,0.7)';
 pell.style.background = 'rgba(175,75,0,0.5)';
@@ -80,12 +84,9 @@ tribo.style.border = '5px solid rgba(140,110,0,0.7)';
 var box = document.querySelectorAll('.box');
 for (var i = 0; i < box.length; i++){
   box[i].style.borderRadius = '12px';
-  box[i].style.height = '40px';
-  box[i].style.width = '1200px';
+  box[i].style.width = '900px';
   box[i].style.margin = '20px 5px';
 }
-
-fibo.appendChild(fibonacci(5, fibo).node);
 
 var right = document.querySelectorAll('.right');
 for (var i = 0; i < right.length; i++){
@@ -104,8 +105,6 @@ for (var i = 0; i < left.length; i++){
 var fib = document.querySelectorAll('.fib');
 for (var i = 0; i < fib.length; i++){
   fib[i].style.textAlign = 'center';
-  //fib[i].style.borderWidth = '10px';
-  //fib[i].style.borderColor = 'clear';
   fib[i].style.backgroundColor = 'rgba(200,200,200,0.15)';
   fib[i].style.display = 'inline-block';
 }
