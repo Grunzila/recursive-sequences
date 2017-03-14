@@ -106,13 +106,11 @@ function tribonacci(iter, node){
     return {'result': sum, 'node': div};
 }
 
-function linkBuild(link, text){
+function linkBuild(link, node){
     var a = document.createElement('a');
     a.setAttribute('href', link);
     a.setAttribute('target','_blank');
-    a.innerHTML = text;
-    //a.style.fontColor = 'white';
-    //a.style.setAttribute('visited','yellow');
+    a.appendChild(node);
     document.body.appendChild(a);
 }
 
@@ -133,6 +131,10 @@ for (var i = 0; i < box.length; i++){
   box[i].style.width = '900px';
   box[i].style.margin = '20px 5px';
   box[i].style.cursor = 'pointer';
+  box[i].style.letterSpacing = '2px';
+  box[i].style.textShadow = '1px 1px 1px white';
+  box[i].style.color = 'darkslategray';
+  box[i].style.fontFamily = '"Comic Sans MS", cursive, sans-serif';
 }
 
 fibo.style.background = 'rgba(200,50,0,0.5)';
@@ -171,11 +173,10 @@ for (var i = 0; i < right.length; i++){
 
 var left = document.querySelectorAll('.left');
 for (var i = 0; i < left.length; i++){
-  //left[i].style.display = 'inline-block';
   left[i].style.float = 'left';
   left[i].style.marginRight = '3px';
 }
 
-linkBuild('https://oeis.org/A000045', 'Fibonacci Sequence|');
-linkBuild('https://oeis.org/A000129', 'Pell Sequence|');
-linkBuild('https://oeis.org/A000073', 'Tribonacci Sequence');
+linkBuild('https://oeis.org/A000045', fibo);
+linkBuild('https://oeis.org/A000129', pello);
+linkBuild('https://oeis.org/A000073', tribo);
