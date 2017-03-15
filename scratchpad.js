@@ -133,6 +133,24 @@ function linkBuild(link, node){
     document.body.appendChild(a);
 }
 
+//Creates a range slider
+//Requires a node to append onto
+//Names the class
+function slideBuild(node, name, max = 30, min = 0, def = 0){
+    var slide = document.createElement('INPUT');
+    slide.setAttribute('type', 'range');
+    slide.setAttribute('class', name);
+    slide.setAttribute('max', max);
+    slide.setAttribute('min', min);
+    slide.setAttribute('defaultValue', def);
+    node.appendChild(slide);
+    return slide;
+}
+
+//Returns the value of a range slider
+function slideValue(slide){
+    return slide.value;
+}
 //******************************************
 //           --INSTANTIATIONS--
 //******************************************
@@ -142,8 +160,10 @@ var fibo = divBuild('fibonacci box', 'fibonacci');
 var pello = divBuild('pell box', 'pell');
 var tribo = divBuild('tribonacci box', 'tribonacci');
 
+var fibSlide = slideBuild(document.body);
+
 //Forms the tree of each tree
-fibo.appendChild(fibonacci(11, fibo).node);
+fibo.appendChild(fibonacci(fibSlide.value, fibo).node);
 pello.appendChild(pell(11, pello).node);
 tribo.appendChild(tribonacci(11, tribo).node);
 
@@ -213,3 +233,7 @@ for (var i = 0; i < left.length; i++){
   left[i].style.float = 'left';
   left[i].style.marginRight = '3px';
 }
+
+//Styles range slide inputs
+fibSlide.style.background = 'green';
+fibSlide.
