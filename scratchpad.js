@@ -231,8 +231,4 @@ for (var i = 0; i < left.length; i++){
   left[i].style.float = 'left';
   left[i].style.marginRight = '3px';
 }
-
-//Styles range slide inputs
-//fibSlide.style.backgroundColor = 'green';
-//fibSlide.
 */
