@@ -1,17 +1,45 @@
+.fibonacci {
+    border : 5px solid rgba(210,30,0,0.7);
+    background: rgba(200,50,0,0.5);
+}
+
+.pell {
+    border : 5px solid rgba(165,85,0,0.7);
+    background: rgba(175,75,0,0.5);
+}
+
+.tribonacci {
+    border : 5px solid rgba(140,110,0,0.7);
+    background: rgba(150,100,0,0.5);
+}
+
 .box {
-    
+    letter-spacing: 2px;
+    color: darkslategray;
+    text-shadow: 1px 1px 1px white;
+    font-family: "Comic Sans MS", cursive, sans-serif;
+    width: 37119px;
+    margin: 20px 5px;
+    border-radius: 12px;
+    cursor: pointer;
 }
 
 .fib {
-    
+    display: inline-block;
+    text-align: center;
+    background-color: rgba(255,255,255,0.1);
 }
 
 .pel{
-    
+    display: inline-block;
+    text-align: center;
+    background-color: rgba(255,255,255,0.1);
 }
 
 .trib {
-    
+    display: inline-block;
+    text-align: center;
+    background-color: rgba(255,255,255,0.1);
 }
 
 .right {

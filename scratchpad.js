@@ -173,6 +173,7 @@ linkBuild('https://oeis.org/A000073', tribo);
 //                 --STYLE--
 //******************************************
 
+/*
 //Styles all sequence boxes
 var box = document.querySelectorAll('.box');
 for (var i = 0; i < box.length; i++){
@@ -234,3 +235,4 @@ for (var i = 0; i < left.length; i++){
 //Styles range slide inputs
 //fibSlide.style.backgroundColor = 'green';
 //fibSlide.
+*/
