@@ -18,7 +18,8 @@
     color: darkslategray;
     text-shadow: 1px 1px 1px white;
     font-family: "Comic Sans MS", cursive, sans-serif;
-    width: 37119px;
+    width: auto;
+    /*width: 37119px;*/
     margin: 20px 5px;
     border-radius: 12px;
     cursor: pointer;
