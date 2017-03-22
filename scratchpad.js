@@ -153,7 +153,7 @@ function slideBuild(node, name, max = 11, min = 0, def = 0){
 //Returns a node
 function buttonBuild(node, name){
     var button = document.createElement('BUTTON');
-    //button.setAttribute('type', 'button');
+    button.setAttribute('class', 'button');
     button.textContent = name + '(0)';
     node.appendChild(button);
     return button;
