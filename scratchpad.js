@@ -36,8 +36,8 @@ function fibonacci(iter, node){
     var sum;
     var div = divBuild('fib', null);
     if (iter <= 1){
-        if (iter === 0) sum = 0;
-        else if (iter === 1) sum = 1;
+        if (iter == 0) sum = 0;
+        else if (iter == 1) sum = 1;
         
         pSeqBuild('Fib', iter, sum, div);
     }
@@ -65,8 +65,8 @@ function pell(iter, node){
     var sum;
     var div = divBuild('pel', null);
     if (iter <= 1){
-        if (iter === 0) sum = 0;
-        else if (iter === 1) sum = 1;
+        if (iter == 0) sum = 0;
+        else if (iter == 1) sum = 1;
         
         pSeqBuild('Pell', iter, sum, div);
     }
@@ -94,9 +94,9 @@ function tribonacci(iter, node){
     var sum;
     var div = divBuild('trib', null);
     if (iter <= 2){
-        if (iter === 0) sum = 0;
-        else if (iter === 1) sum = 0;
-        else if (iter === 2) sum = 1;
+        if (iter == 0) sum = 0;
+        else if (iter == 1) sum = 0;
+        else if (iter == 2) sum = 1;
         
         pSeqBuild('Trib', iter, sum, div);
     }
@@ -136,13 +136,14 @@ function linkBuild(link, node){
 //Creates a range slider
 //Requires a node to append onto
 //Names the class
-function slideBuild(node, name, max = 10, min = 0, def = 0){
+function slideBuild(node, name, max = 11, min = 0, def = 0){
     var slide = document.createElement('INPUT');
     slide.setAttribute('type', 'range');
     slide.setAttribute('class', name);
     slide.setAttribute('max', max);
     slide.setAttribute('min', min);
-    slide.setAttribute('defaultValue', def);
+    //slide.setAttribute('defaultValue', def);
+    slide.defaultValue = def;
     //slide.setAttribute('backgroundColor', 'green');
     node.appendChild(slide);
     return slide;
@@ -157,6 +158,22 @@ function buttonBuild(node){
     return button;
 }
 
+var slideEvent = function(slide, button){
+    console.log("I activated!" + slide.max);
+    button.textContent = 'Fib(' + slide.value + ')';
+}
+
+var buttonEvent = function(slide, node, name){
+    console.log('I am evil overlord');
+    //fibonacci(slide.value, node);
+    var fibExist = node.querySelector('.' + name);
+    if (fibExist){
+        console.log('Hello I exist');
+        node.removeChild(fibExist);
+    }
+    node.appendChild(fibonacci(slide.value, node).node);
+}
+
 
 //******************************************
 //           --INSTANTIATIONS--
@@ -169,8 +186,8 @@ var tribo = divBuild('tribonacci box', 'tribonacci');
 
 var fibSlide = slideBuild(document.body);
 var fibButton = buttonBuild(document.body);
-fibSlide.addEventListener('onchange',fibButton.textContent = 'fib(');
-fibButton.addEventListener('onclick',fibButton.textContent += '0)');
+fibSlide.addEventListener('mouseout', function(){slideEvent(fibSlide, fibButton)});
+fibButton.addEventListener('click', function(){buttonEvent(fibSlide, fibo, 'fib')});
 
 //Forms the tree of each tree
 fibo.appendChild(fibonacci(fibSlide.value/*11*/, fibo).node);
