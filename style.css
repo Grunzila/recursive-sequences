@@ -53,3 +53,15 @@
     float: left;
     margin-right: 3px;
 }
+
+.button {
+    background: rgb(220, 220, 200);
+    border: 5px solid rgb(150,180,180);
+    border-radius: 10px;
+    padding: 4px 10px;
+    letter-spacing: 1px;
+    font-family: "Comic Sans MS", cursive, sans-serif;
+    color: rgb(20, 50, 20);
+    text-shadow: 1px 1px 1px rgb(50, 80, 50);
+    cursor: pointer;
+}
