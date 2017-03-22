@@ -151,27 +151,32 @@ function slideBuild(node, name, max = 11, min = 0, def = 0){
 
 //Creates a button
 //Returns a node
-function buttonBuild(node){
-    var button = document.createElement('INPUT');
-    button.setAttribute('type', 'button');
+function buttonBuild(node, name){
+    var button = document.createElement('BUTTON');
+    //button.setAttribute('type', 'button');
+    button.textContent = name + '(0)';
     node.appendChild(button);
     return button;
 }
 
-var slideEvent = function(slide, button){
-    console.log("I activated!" + slide.max);
-    button.textContent = 'Fib(' + slide.value + ')';
+var slideEvent = function(slide, button, name){
+    button.textContent = name + '(' + slide.value + ')';
 }
 
 var buttonEvent = function(slide, node, name){
-    console.log('I am evil overlord');
-    //fibonacci(slide.value, node);
     var fibExist = node.querySelector('.' + name);
     if (fibExist){
-        console.log('Hello I exist');
         node.removeChild(fibExist);
     }
-    node.appendChild(fibonacci(slide.value, node).node);
+    if (name === 'fib'){
+        node.appendChild(fibonacci(slide.value, node).node);
+    }
+    else if (name === 'pel'){
+        node.appendChild(pell(slide.value, node).node);
+    }
+    else if (name === 'trib'){
+        node.appendChild(tribonacci(slide.value, node).node);
+    }
 }
 
 
@@ -184,15 +189,26 @@ var fibo = divBuild('fibonacci box', 'fibonacci');
 var pello = divBuild('pell box', 'pell');
 var tribo = divBuild('tribonacci box', 'tribonacci');
 
+//Fibonacci tree and slider
 var fibSlide = slideBuild(document.body);
-var fibButton = buttonBuild(document.body);
-fibSlide.addEventListener('mouseout', function(){slideEvent(fibSlide, fibButton)});
+var fibButton = buttonBuild(document.body, 'Fib');
+fibSlide.addEventListener('mouseout', function(){slideEvent(fibSlide, fibButton, 'Fib')});
 fibButton.addEventListener('click', function(){buttonEvent(fibSlide, fibo, 'fib')});
+fibo.appendChild(fibonacci(fibSlide.value, fibo).node);
 
-//Forms the tree of each tree
-fibo.appendChild(fibonacci(fibSlide.value/*11*/, fibo).node);
-pello.appendChild(pell(11, pello).node);
-tribo.appendChild(tribonacci(11, tribo).node);
+//Pell tree and slider
+var pellSlide = slideBuild(document.body);
+var pellButton = buttonBuild(document.body, 'Pell');
+pellSlide.addEventListener('mouseout', function(){slideEvent(pellSlide, pellButton, 'Pell')});
+pellButton.addEventListener('click', function(){buttonEvent(pellSlide, pello, 'pel')});
+pello.appendChild(pell(pellSlide.value, pello).node);
+
+//Tribonacci tree and slider
+var tribSlide = slideBuild(document.body);
+var tribButton = buttonBuild(document.body, 'Trib');
+tribSlide.addEventListener('mouseout', function(){slideEvent(tribSlide, tribButton, 'Trib')});
+tribButton.addEventListener('click', function(){buttonEvent(tribSlide, tribo, 'trib')});
+tribo.appendChild(tribonacci(tribSlide.value, tribo).node);
 
 //Makes hyperlinks from each sequence's box
 linkBuild('https://oeis.org/A000045', fibo);
