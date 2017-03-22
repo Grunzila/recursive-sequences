@@ -142,9 +142,7 @@ function slideBuild(node, name, max = 11, min = 0, def = 0){
     slide.setAttribute('class', name);
     slide.setAttribute('max', max);
     slide.setAttribute('min', min);
-    //slide.setAttribute('defaultValue', def);
     slide.defaultValue = def;
-    //slide.setAttribute('backgroundColor', 'green');
     node.appendChild(slide);
     return slide;
 }
@@ -159,10 +157,12 @@ function buttonBuild(node, name){
     return button;
 }
 
+//Does the work of a slider event
 var slideEvent = function(slide, button, name){
     button.textContent = name + '(' + slide.value + ')';
 }
 
+//Does the work of a button event
 var buttonEvent = function(slide, node, name){
     var treeExist = node.querySelector('.' + name);
     if (treeExist){
