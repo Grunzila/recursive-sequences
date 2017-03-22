@@ -167,8 +167,10 @@ var fibo = divBuild('fibonacci box', 'fibonacci');
 var pello = divBuild('pell box', 'pell');
 var tribo = divBuild('tribonacci box', 'tribonacci');
 
-var fibSlide = slideBuild(fibo);
-var fibButton = buttonBuild(fibo);
+var fibSlide = slideBuild(document.body);
+var fibButton = buttonBuild(document.body);
+fibSlide.addEventListener('onchange',fibButton.textContent = 'fib(');
+fibButton.addEventListener('onclick',fibButton.textContent += '0)');
 
 //Forms the tree of each tree
 fibo.appendChild(fibonacci(fibSlide.value/*11*/, fibo).node);
