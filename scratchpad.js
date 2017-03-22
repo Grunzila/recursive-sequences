@@ -164,9 +164,9 @@ var slideEvent = function(slide, button, name){
 }
 
 var buttonEvent = function(slide, node, name){
-    var fibExist = node.querySelector('.' + name);
-    if (fibExist){
-        node.removeChild(fibExist);
+    var treeExist = node.querySelector('.' + name);
+    if (treeExist){
+        node.removeChild(treeExist);
     }
     if (name === 'fib'){
         node.appendChild(fibonacci(slide.value, node).node);
@@ -192,21 +192,21 @@ var tribo = divBuild('tribonacci box', 'tribonacci');
 //Fibonacci tree and slider
 var fibSlide = slideBuild(document.body);
 var fibButton = buttonBuild(document.body, 'Fib');
-fibSlide.addEventListener('mouseout', function(){slideEvent(fibSlide, fibButton, 'Fib')});
+fibSlide.addEventListener('change', function(){slideEvent(fibSlide, fibButton, 'Fib')});
 fibButton.addEventListener('click', function(){buttonEvent(fibSlide, fibo, 'fib')});
 fibo.appendChild(fibonacci(fibSlide.value, fibo).node);
 
 //Pell tree and slider
 var pellSlide = slideBuild(document.body);
 var pellButton = buttonBuild(document.body, 'Pell');
-pellSlide.addEventListener('mouseout', function(){slideEvent(pellSlide, pellButton, 'Pell')});
+pellSlide.addEventListener('change', function(){slideEvent(pellSlide, pellButton, 'Pell')});
 pellButton.addEventListener('click', function(){buttonEvent(pellSlide, pello, 'pel')});
 pello.appendChild(pell(pellSlide.value, pello).node);
 
 //Tribonacci tree and slider
 var tribSlide = slideBuild(document.body);
 var tribButton = buttonBuild(document.body, 'Trib');
-tribSlide.addEventListener('mouseout', function(){slideEvent(tribSlide, tribButton, 'Trib')});
+tribSlide.addEventListener('change', function(){slideEvent(tribSlide, tribButton, 'Trib')});
 tribButton.addEventListener('click', function(){buttonEvent(tribSlide, tribo, 'trib')});
 tribo.appendChild(tribonacci(tribSlide.value, tribo).node);
 
